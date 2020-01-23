@@ -5,16 +5,17 @@
         = current_user.name
       %ul.top-items__menu
         %li.top-items__icons
-          = link_to new_user_session_path do
+          = link_to new_group_path do
             = icon('fas', 'edit')
         %li.top-items__icons2
           = link_to  destroy_user_session_path, method: "delete" do
             = icon('fas', 'cog')
       
   .side-bar__group-list
-    = link_to "#", class:"group" do
+    - current_user.groups.each do |group|
       .group
-        %p.group__name
-          test
-        %p.group__message
-          まだメッセージがありません
+        = link_to groups_path, class: "group__a" do
+          .group__name
+            = group.name
+          .group__message
+            まだメッセージがありません
