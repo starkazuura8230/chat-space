@@ -1,20 +1,20 @@
 .side-bar
- .side-bar__user-name
-  .top-items
-   %p.top-items__name
-    masa
-   %ul.top-items__menu
-    %li.top-items__icons
-     = link_to "#" do
-      = icon('fas', 'edit')
-    %li.top-items__icons2
-     = link_to "#" do
-      = icon('fas', 'cog')
-
- .side-bar__group-list
-  = link_to "#", class:"group" do
-   .group
-    %p.group__name
-    test
-    %p.group__message
-    まだメッセージがありません
+  .side-bar__user-name
+    .top-items
+      %p.top-items__name
+        = current_user.name
+      %ul.top-items__menu
+        %li.top-items__icons
+          = link_to new_user_session_path do
+            = icon('fas', 'edit')
+        %li.top-items__icons2
+          = link_to  destroy_user_session_path, method: "delete" do
+            = icon('fas', 'cog')
+      
+  .side-bar__group-list
+    = link_to "#", class:"group" do
+      .group
+        %p.group__name
+          test
+        %p.group__message
+          まだメッセージがありません
