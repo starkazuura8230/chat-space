@@ -2,28 +2,23 @@
   .main-chat__group-info
     .group
       %p.group__text
-      text
+        = @group.name
       %p.group__member
-      member :masa
+        member :
+        = current_user.name
     = link_to edit_group_path(@group), class: "edit" do
       Edit
   .main-chat__message-list
-    .first
-      .info
-        %p.name
-          masa
+    - @messages.each do |m|
+      .first
+        .info
+          %p.name
+            = m.user.name
+          %p.day
+            = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
         %p.comment
-          おはよう！
-      %p.day
-      2019/11/20(Wed) 17:43:01
-    .second
-      .info2
-        %p.name2
-          masa
-        %p.comment2
-          今日は夜から雨
-      %p.day2
-      2019/11/20(Wed) 17:43:34
+          = m.content
+
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
