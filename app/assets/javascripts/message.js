@@ -49,9 +49,6 @@ $('#new_message').on('submit', function(e){
     processData: false,
     contentType: false
   })
-//   .fail(function() {
-//     alert("メッセージ送信に失敗しました");
-// });
     .done(function(data){
       var html = buildHTML(data);
       $('.main-chat__message-list').append(html);      
