@@ -81,22 +81,22 @@
       background-color: #fafafa;
       .first {
         padding: 35px 0 46px 40px;
-        .info {
+        .upper-message {
           display: flex;
-          .name {
+          .upper-message__user-name {
             font-size: 16px;
             color: #333333;
             padding-bottom: 12px;
             padding-right: 10px;
           }
-          .comment {
-            color: #434A54;
-            font-size: 14px;
+          .upper-message__date {
+            color: #999999;
+            font-size: 12px;
           }
         }
-        .day {
-          color: #999999;
-          font-size: 12px;
+        .lower-message__content {
+          color: #434A54;
+          font-size: 14px;
         }
       }
       .second {

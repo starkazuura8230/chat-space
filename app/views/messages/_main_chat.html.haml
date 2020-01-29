@@ -11,14 +11,16 @@
   .main-chat__message-list
     - @messages.each do |m|
       .first
-        .info
-          %p.name
+        .upper-message
+          %p.upper-message__user-name
             = m.user.name
-          %p.day
+          %p.upper-message__date
             = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
-        %p.comment
-          = m.content
-
+        %p.lower-message
+          - if m.content.present?
+            %p.lower-message__content
+            = m.content
+          = image_tag m.image.url, class: 'lower-message__image' if m.image.present?
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
