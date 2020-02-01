@@ -9,18 +9,18 @@
     = link_to edit_group_path(@group), class: "edit" do
       Edit
   .main-chat__message-list
-    - @messages.each do |m|
-      .first
+    - @messages.each do |message|
+      .first{data: {message: {id: message.id}}}
         .upper-message
           %p.upper-message__user-name
-            = m.user.name
+            = message.user.name
           %p.upper-message__date
-            = m.created_at.strftime("%Y年%m月%d日 %H時%M分")
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
         %p.lower-message
-          - if m.content.present?
+          - if message.content.present?
             %p.lower-message__content
-            = m.content
-          = image_tag m.image.url, class: 'lower-message__image' if m.image.present?
+            = message.content
+          = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
   .form
     = form_for [@group, @message] do |f|
       = f.text_field :content, class: 'form__message', placeholder: 'type a message'
