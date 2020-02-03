@@ -36,8 +36,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
 end
 
 group :development do
@@ -65,3 +70,13 @@ gem 'jquery-rails'
 group :production do
   gem 'unicorn', '5.4.1'
 end
+
+require "capistrano/setup"
+require "capistrano/deploy"
+require 'capistrano/rbenv'
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano3/unicorn'
+
+Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
