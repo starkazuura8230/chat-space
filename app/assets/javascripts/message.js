@@ -1,6 +1,6 @@
 $(function(){ 
-  last_message_id = $('.message:last').data("message-id");
-  console.log(last_message_id);
+  // last_message_id = $('.message:last').data("message-id");
+  // console.log(last_message_id);
   function buildHTML(message){
     if ( message.image ) {
       var html =
@@ -83,7 +83,7 @@ $(function(){
       }
     })
     .fail(function() {
-      console.log('error');
+      // console.log('error');
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
