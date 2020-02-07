@@ -21,7 +21,7 @@ $(function(){
         </div>`
       return html;
     } else {
-      console.log(message)
+
       var html =
         `<div class="first" data-message-id=${message.id}>
          <div class="upper-message">
@@ -44,7 +44,7 @@ $(function(){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
-    console.log(url)
+    // console.log(url)
     $.ajax({
       url: url,
       type: "POST",
@@ -65,7 +65,7 @@ $(function(){
     });
   })
   var reloadMessages = function() {
-    last_message_id = $('.message:last').data("message-id");
+    last_message_id = $('.first:last').data("message-id");
     $.ajax({
       url: "api/messages",
       type: 'get',
@@ -87,6 +87,6 @@ $(function(){
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-    // setInterval(reloadMessages, 7000);
+    setInterval(reloadMessages, 7000);
   }
 });
